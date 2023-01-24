@@ -1,0 +1,5 @@
+docker push mongo:4.2
+->na raiz do projeto
+mvn -f pom.xml clean package
+sudo docker build -t recrutamentovr:1.0 .
+sudo docker-compose up

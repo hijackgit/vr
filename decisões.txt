@@ -1,0 +1,29 @@
+
+
+br.com.vr.host - onde fica a configuração do swagger
+br.com.vr.host.cartoes - endpoints, onde ficam as chamadas rest da aplicação
+br.com.vr.host.cartoes.dto - onde ficam as classes utilizadas no request e no response no pacote acima. Aqui foram coladas validações básicas em annotations. Foi criada a annotation CartaoConstraint para validar o numero do cartão
+br.com.vr.validators - Validadores customizados que serão utilizados em br.com.vr.host.cartoes.dto
+br.com.vr.model - Classes de negócios, entities utilizados que serão persistidos.
+br.com.vr.model.seguranca - Utilitários de segurança como criptografia
+br.com.vr.model.service - Interface dos serviços
+br.com.vr.model.service.impl - Serviços utilizados, controller onde roda a lógica e regra de negócios
+br.com.vr.utils - Utilitarios utiliados nos testes
+
+
+1. Não foi utilizada uma camada DAO, pois neste caso foi usado JPA que já encapsula os detalhes de acesso ao banco de dados
+2. No caso de uma regra de negócio não obedecida, foi escolhido o retorno de objetos com resultados em vez de disparar uma business exception.
+Escolhemos esta abordagem para a mesa de crédito da VIA Varejo, pois assim logamos a entrada e a saída dos métodos no mongoDB através de uma annotation.
+
+Os erros são logados automaticamente. Temos menos alertas no dynatrace: tentamos adicionar exceções para regras de negócio no dyna antes, mas segundo o SRE, elas se perdem com o tempo.
+3. Teríamos que consultar a lei LGPD para ver se podemos trafegar o número do cartão como solicitado
+4. Escolhi capturar os erros no endpoint. Aqui na VIA capturávamos automaticamente os erros, podemos discutir um padrão.
+
+
+
+
+
+
+
+
+
