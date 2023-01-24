@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: recrutamentoVR
+  profiles:
+    active: local
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.DB2390Dialect
+---
+spring:
+  profiles: local
+  data:
+    mongodb:
+      uri: mongodb://user:password@m127.0.0.1:27017/miniautorizador?&authSource=miniautorizador
+      
+versao: "1.0"
+
+cartoes.saldoInicial: 500.0  
+
+logging:
+  level:
+    org.springframework.security: ERROR
+    org.springframework.web: ERROR
+    org.springframework.web.filter.CommonsRequestLoggingFilter: ERROR
+    io.swagger.client: ERROR
+    br.com.vr: ERROR   
